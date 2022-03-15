@@ -24,21 +24,23 @@ int countPairs3(int *arr, int len, int value) {
   for (int i = 0; i < len - 1; i++) {
     bool result = false;
     int start = i+1;
-    int mid = (start + end) / 2 ;
+    int mid = (start + end) / 2;
     while (start <= end) {
       if (arr[mid] == value - arr[i]) {
         count++;
         result = true;
         break;
-      } else if (arr[mid] > value - arr[i]){
+      } else if (arr[mid] > value - arr[i]) {
         end = mid - 1;
-      } else if (arr[mid] < value - arr[i]) start = mid + 1 ;
+      } else if (arr[mid] < value - arr[i]) {
+        start = mid + 1;
+      }
       mid = (start + end) / 2;
     }
     int temp1 = mid;
     int temp2 = mid;
     if (result == true) {
-      while (arr[temp1-1] == arr[mid]) {
+      while (arr[temp1-1] == arr[mid] && temp1-1 != i) {
         count++;
         temp1--;
       }
